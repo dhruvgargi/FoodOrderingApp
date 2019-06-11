@@ -65,7 +65,7 @@
                         <library>spring-boot</library>
                         <generateApis>false</generateApis>
                         <generateModels>true</generateModels>
-                        <modelPackage>com.upgrad.FoodOrderingApp.api.model</modelPackage>
+                        <modelPackage>com.upgrad.FoodOrderingApp.api.requestmodel</modelPackage>
                         <configOptions>
                             <java8>true</java8>
                             <sourceFolder>.</sourceFolder>

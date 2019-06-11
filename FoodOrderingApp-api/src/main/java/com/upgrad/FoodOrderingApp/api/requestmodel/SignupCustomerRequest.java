@@ -1,4 +1,4 @@
-package com.upgrad.FoodOrderingApp.api.model;
+package com.upgrad.FoodOrderingApp.api.requestmodel;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
