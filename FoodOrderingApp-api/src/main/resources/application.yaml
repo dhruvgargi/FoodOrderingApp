@@ -10,9 +10,9 @@ spring:
 
   datasource:
     driverClassName: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/restaurantdb
+    url: jdbc:postgresql://localhost:5433/foodiesjunction           #IP Address and Port needs to be specified in the datasource URL.
     username: postgres
-    password: password
+    password: postgres                                              #Password needs to be specified for datasource
 
   jpa:
     properties:

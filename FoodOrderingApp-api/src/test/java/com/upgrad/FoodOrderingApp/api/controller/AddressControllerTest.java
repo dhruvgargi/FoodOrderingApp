@@ -1,10 +1,10 @@
 package com.upgrad.FoodOrderingApp.api.controller;
-
+/*
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.upgrad.FoodOrderingApp.api.model.AddressList;
-import com.upgrad.FoodOrderingApp.api.model.AddressListResponse;
-import com.upgrad.FoodOrderingApp.api.model.StatesList;
-import com.upgrad.FoodOrderingApp.api.model.StatesListResponse;
+import com.upgrad.FoodOrderingApp.api.requestmodal.AddressList;
+import com.upgrad.FoodOrderingApp.api.requestmodal.AddressListResponse;
+import com.upgrad.FoodOrderingApp.api.requestmodal.StatesList;
+import com.upgrad.FoodOrderingApp.api.requestmodal.StatesListResponse;
 import com.upgrad.FoodOrderingApp.service.businness.AddressService;
 import com.upgrad.FoodOrderingApp.service.businness.CustomerService;
 import com.upgrad.FoodOrderingApp.service.entity.AddressEntity;
@@ -433,3 +433,4 @@ public class AddressControllerTest {
         assertNull(statesLists.getStates());
     }
 }
+*/
