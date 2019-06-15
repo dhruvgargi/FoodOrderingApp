@@ -1,7 +1,7 @@
 package com.upgrad.FoodOrderingApp.api.controller;
 /*
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.upgrad.FoodOrderingApp.api.requestmodel.ItemListResponse;
+import com.upgrad.FoodOrderingApp.api.requestmodal.ItemListResponse;
 import com.upgrad.FoodOrderingApp.service.businness.ItemService;
 import com.upgrad.FoodOrderingApp.service.businness.RestaurantService;
 import com.upgrad.FoodOrderingApp.service.entity.ItemEntity;
