@@ -221,7 +221,7 @@ public class CustomerControllerTest {
     @Test
     public void shouldNotLogoutWhenCustomerIsNotLoggedIn() throws Exception {
         when(mockCustomerService.logout("auth"))
-                .thenThrow(new AuthorizationFailedException("ATHR-001", "Customer is not Logged in."));
+                .thenThrow(new AuthorizationFailedException("ATHR-001", "CustomerEntity is not Logged in."));
 
         mockMvc
                 .perform(post("/customer/logout")
@@ -236,7 +236,7 @@ public class CustomerControllerTest {
     @Test
     public void shouldNotLogoutIfCustomerIsAlreadyLoggedOut() throws Exception {
         when(mockCustomerService.logout("auth"))
-                .thenThrow(new AuthorizationFailedException("ATHR-002", "Customer is logged out. Log in again to access this endpoint."));
+                .thenThrow(new AuthorizationFailedException("ATHR-002", "CustomerEntity is logged out. Log in again to access this endpoint."));
 
         mockMvc
                 .perform(post("/customer/logout")
@@ -310,7 +310,7 @@ public class CustomerControllerTest {
     @Test
     public void shouldNotUpdateCustomerDetailsWhenCustomerIsNotLoggedIn() throws Exception {
         when(mockCustomerService.getCustomer("auth"))
-                .thenThrow(new AuthorizationFailedException("ATHR-001", "Customer is not Logged in."));
+                .thenThrow(new AuthorizationFailedException("ATHR-001", "CustomerEntity is not Logged in."));
 
         mockMvc
                 .perform(put("/customer")
@@ -328,7 +328,7 @@ public class CustomerControllerTest {
     @Test
     public void shouldUpdateCustomerDetailsIfCustomerIsAlreadyLoggedOut() throws Exception {
         when(mockCustomerService.getCustomer("auth"))
-                .thenThrow(new AuthorizationFailedException("ATHR-002", "Customer is logged out. Log in again to access this endpoint."));
+                .thenThrow(new AuthorizationFailedException("ATHR-002", "CustomerEntity is logged out. Log in again to access this endpoint."));
 
         mockMvc
                 .perform(put("/customer")
@@ -417,7 +417,7 @@ public class CustomerControllerTest {
     @Test
     public void shouldNotUpdateCustomerPasswordWhenCustomerIsNotLoggedIn() throws Exception {
         when(mockCustomerService.getCustomer("auth"))
-                .thenThrow(new AuthorizationFailedException("ATHR-001", "Customer is not Logged in."));
+                .thenThrow(new AuthorizationFailedException("ATHR-001", "CustomerEntity is not Logged in."));
 
         mockMvc
                 .perform(put("/customer/password")
@@ -434,7 +434,7 @@ public class CustomerControllerTest {
     // logged out.
     public void shouldUpdateCustomerPasswordIfCustomerIsAlreadyLoggedOut() throws Exception {
         when(mockCustomerService.getCustomer("auth"))
-                .thenThrow(new AuthorizationFailedException("ATHR-002", "Customer is logged out. Log in again to access this endpoint."));
+                .thenThrow(new AuthorizationFailedException("ATHR-002", "CustomerEntity is logged out. Log in again to access this endpoint."));
 
         mockMvc
                 .perform(put("/customer/password")

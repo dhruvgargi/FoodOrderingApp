@@ -25,7 +25,7 @@ public class OrderController {
 
 
     @PostMapping("/order")
-    @ApiOperation(value = "Save order details for Customer")
+    @ApiOperation(value = "Save order details for CustomerEntity")
     public ResponseEntity<SaveOrderResponse> saveOrder(@RequestBody SaveOrderRequest saveOrderRequest){
 
         return new ResponseEntity<SaveOrderResponse>(HttpStatus.CREATED);

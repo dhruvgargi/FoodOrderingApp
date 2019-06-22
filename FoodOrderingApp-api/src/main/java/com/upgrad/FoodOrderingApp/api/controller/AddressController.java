@@ -39,7 +39,7 @@ public class AddressController {
     }
 
     @PostMapping(value = "/address",consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    @ApiOperation(value = "Save Address Details for specified Customer")
+    @ApiOperation(value = "Save Address Details for specified CustomerEntity")
     public ResponseEntity<SaveAddressResponse> saveAddress(@RequestBody SaveAddressRequest saveAddressRequest){
 
         return new ResponseEntity<SaveAddressResponse>(HttpStatus.CREATED);

@@ -1,7 +1,11 @@
 package com.upgrad.FoodOrderingApp.service.model;
 
+import org.springframework.stereotype.Component;
 
-public class Customer{
+import java.io.Serializable;
+
+@Component
+public class CustomerModel implements Serializable {
 
 
     private String firstName;
@@ -11,6 +15,16 @@ public class Customer{
     private String password;
     private String oldPassword;
     private String newPassword;
+
+    public String getuUId() {
+        return uUId;
+    }
+
+    public void setuUId(String uUId) {
+        this.uUId = uUId;
+    }
+
+    private String uUId;
 
     public String getFirstName() {
         return firstName;
@@ -66,6 +80,11 @@ public class Customer{
 
     public void setNewPassword(String newPassword) {
         this.newPassword = newPassword;
+    }
+
+    public String toString(){
+        return "CustomerEntity Object : [ First Name: - "+this.firstName+" - Last Name: -"+this.lastName+" - Email Address- "+this.emailAddress
+                +" - Contact Number -"+this.contactNumber+" - Password: -"+this.password;
     }
 
 }

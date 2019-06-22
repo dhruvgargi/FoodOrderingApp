@@ -20,7 +20,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class SwaggerConfiguration {
 
 
-    ApiInfo apiInfo = new ApiInfoBuilder().title("Foodies Junction Application: Back-end").description("API end-points for Foodies Junction Application").
+    ApiInfo apiInfo = new ApiInfoBuilder().title("Foodies Junction : IIIT-B Capstone Project (Back-end)").description("API end-points for Foodies Junction Application").
             version("1.0.1-SNAPSHOT").build();
 
     @Bean

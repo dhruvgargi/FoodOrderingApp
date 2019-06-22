@@ -105,7 +105,7 @@ public class OrderControllerTest {
     @Test
     public void shouldNotSaveOrderIfCustomerIsNotLoggedIn() throws Exception {
         when(mockCustomerService.getCustomer("invalid_auth"))
-                .thenThrow(new AuthorizationFailedException("ATHR-001", "Customer is not Logged in."));
+                .thenThrow(new AuthorizationFailedException("ATHR-001", "CustomerEntity is not Logged in."));
 
         mockMvc
                 .perform(post("/order")
@@ -128,7 +128,7 @@ public class OrderControllerTest {
     @Test
     public void shouldNotSaveOrderIfCustomerIsLoggedOut() throws Exception {
         when(mockCustomerService.getCustomer("invalid_auth"))
-                .thenThrow(new AuthorizationFailedException("ATHR-002", "Customer is logged out. Log in again to access this endpoint."));
+                .thenThrow(new AuthorizationFailedException("ATHR-002", "CustomerEntity is logged out. Log in again to access this endpoint."));
         mockMvc
                 .perform(post("/order")
                         .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
@@ -385,7 +385,7 @@ public class OrderControllerTest {
     @Test
     public void shouldNotGetPlacedOrderDetailsIfCustomerIsNotLoggedIn() throws Exception {
         when(mockCustomerService.getCustomer("invalid_auth"))
-                .thenThrow(new AuthorizationFailedException("ATHR-001", "Customer is not Logged in."));
+                .thenThrow(new AuthorizationFailedException("ATHR-001", "CustomerEntity is not Logged in."));
         mockMvc
                 .perform(get("/order")
                         .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
@@ -402,7 +402,7 @@ public class OrderControllerTest {
     @Test
     public void shouldNotGetPlacedOrderDetailsIfCustomerIsLoggedOut() throws Exception {
         when(mockCustomerService.getCustomer("invalid_auth"))
-                .thenThrow(new AuthorizationFailedException("ATHR-002", "Customer is logged out. Log in again to access this endpoint."));
+                .thenThrow(new AuthorizationFailedException("ATHR-002", "CustomerEntity is logged out. Log in again to access this endpoint."));
         mockMvc
                 .perform(get("/order")
                         .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
@@ -458,7 +458,7 @@ public class OrderControllerTest {
     @Test
     public void shouldNotGetCouponByNameIfCustomerIsNotLoggedIn() throws Exception {
         when(mockCustomerService.getCustomer("invalid_auth"))
-                .thenThrow(new AuthorizationFailedException("ATHR-001", "Customer is not Logged in."));
+                .thenThrow(new AuthorizationFailedException("ATHR-001", "CustomerEntity is not Logged in."));
         mockMvc
                 .perform(get("/order/coupon/myCoupon")
                         .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
@@ -475,7 +475,7 @@ public class OrderControllerTest {
     @Test
     public void shouldNotGetCouponByNameIfCustomerIsLoggedOut() throws Exception {
         when(mockCustomerService.getCustomer("invalid_auth"))
-                .thenThrow(new AuthorizationFailedException("ATHR-002", "Customer is logged out. Log in again to access this endpoint."));
+                .thenThrow(new AuthorizationFailedException("ATHR-002", "CustomerEntity is logged out. Log in again to access this endpoint."));
         mockMvc
                 .perform(get("/order/coupon/myCoupon")
                         .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)

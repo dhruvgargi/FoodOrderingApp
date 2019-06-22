@@ -281,7 +281,7 @@ public class RestaurantControllerTest {
     @Test
     public void shouldNotUpdateRestaurantRatingIfCustomerIsNotLoggedIn() throws Exception {
         when(mockCustomerService.getCustomer("invalid_auth"))
-                .thenThrow(new AuthorizationFailedException("ATHR-001", "Customer is not Logged in."));
+                .thenThrow(new AuthorizationFailedException("ATHR-001", "CustomerEntity is not Logged in."));
 
         mockMvc
                 .perform(put("/restaurant/someRestaurantId/?customer_rating=4.5")
@@ -299,7 +299,7 @@ public class RestaurantControllerTest {
     @Test
     public void shouldNotUpdateRestaurantRatingIfCustomerIsLoggedOut() throws Exception {
         when(mockCustomerService.getCustomer("invalid_auth"))
-                .thenThrow(new AuthorizationFailedException("ATHR-002", "Customer is logged out. Log in again to access this endpoint."));
+                .thenThrow(new AuthorizationFailedException("ATHR-002", "CustomerEntity is logged out. Log in again to access this endpoint."));
 
         mockMvc
                 .perform(put("/restaurant/someRestaurantId/?customer_rating=4.5")
