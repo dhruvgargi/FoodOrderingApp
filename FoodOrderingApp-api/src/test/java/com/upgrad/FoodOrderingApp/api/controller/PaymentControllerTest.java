@@ -1,9 +1,10 @@
 package com.upgrad.FoodOrderingApp.api.controller;
-/*
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.upgrad.FoodOrderingApp.api.requestmodal.PaymentListResponse;
 import com.upgrad.FoodOrderingApp.service.businness.PaymentService;
 import com.upgrad.FoodOrderingApp.service.entity.PaymentEntity;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,11 +51,10 @@ public class PaymentControllerTest {
                 .andReturn().getResponse().getContentAsString();
 
         final PaymentListResponse paymentResponses = new ObjectMapper().readValue(response, PaymentListResponse.class);
-        assertEquals(paymentResponses.getPaymentMethods().size(), 1);
-        assertEquals(paymentResponses.getPaymentMethods().get(0).getId().toString(), paymentId);
-        assertEquals(paymentResponses.getPaymentMethods().get(0).getPaymentName(), "samplePaymentName");
+        Assert.assertEquals(paymentResponses.getPaymentMethods().size(), 1);
+        Assert.assertEquals(paymentResponses.getPaymentMethods().get(0).getId().toString(), paymentId);
+        Assert.assertEquals(paymentResponses.getPaymentMethods().get(0).getPaymentName(), "samplePaymentName");
         verify(mockPaymentService, times(1)).getAllPaymentMethods();
     }
 
 }
-*/
