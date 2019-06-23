@@ -3,7 +3,8 @@ package com.upgrad.FoodOrderingApp.api.controller;
 
 import com.upgrad.FoodOrderingApp.api.requestmodal.*;
 import com.upgrad.FoodOrderingApp.service.businness.CustomerService;
-import com.upgrad.FoodOrderingApp.service.model.Customer;
+import com.upgrad.FoodOrderingApp.service.exception.SignUpRestrictedException;
+import com.upgrad.FoodOrderingApp.service.model.CustomerModel;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,29 +13,41 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/customer")
-@Api(value = "Customer Controller",description = "end-points for Customer Functions: Signup/Login/Logout/Password")
+@Api(value = "CustomerEntity Controller",description = "end-points for CustomerEntity Functions: Signup/Login/Logout/Password")
 public class CustomerController {
 
-    Customer customerModel;
+    @Autowired
+    CustomerModel customerModel;
 
     @Autowired
     CustomerService customerService;
 
-    @PostMapping(path = "/signup",consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @PostMapping(path = "/signup",consumes = MediaType.APPLICATION_JSON_UTF8_VALUE,produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ApiOperation(value="Registration for new customer")
-    public ResponseEntity<SignupCustomerResponse> signUpCustomer(@RequestBody SignupCustomerRequest signupCustomerRequest){
-        System.out.println("CustomerController>>>>>>"+signupCustomerRequest.toString());
+    public ResponseEntity<SignupCustomerResponse> registerCustomer(@RequestBody SignupCustomerRequest signupCustomerRequest)
+    throws SignUpRestrictedException {
         customerModel.setFirstName(signupCustomerRequest.getFirstName());
         customerModel.setLastName(signupCustomerRequest.getLastName());
         customerModel.setEmailAddress(signupCustomerRequest.getEmailAddress());
+        customerModel.setContactNumber(signupCustomerRequest.getContactNumber());
         customerModel.setPassword(signupCustomerRequest.getPassword());
+        customerModel.setuUId(UUID.randomUUID().toString());
 
-        boolean bool = customerService.signupCustomerService(customerModel);
+        SignupCustomerResponse signupCustomerResponse = new SignupCustomerResponse();
+        signupCustomerResponse.setId(customerModel.getuUId());
 
-        return new ResponseEntity<SignupCustomerResponse>(HttpStatus.CREATED);
+        customerModel = customerService.registerUser(customerModel);
+
+        signupCustomerResponse.setId(customerModel.getuUId());
+        signupCustomerResponse.setStatus("CUSTOMER SUCCESSFULLY REGISTERED");
+
+        return new ResponseEntity<>(signupCustomerResponse,HttpStatus.CREATED);
     }
 
 
@@ -59,7 +72,7 @@ public class CustomerController {
     }
 
     @PutMapping(path="/password",consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    @ApiOperation(value="Update the password for an existing Customer")
+    @ApiOperation(value="Update the password for an existing CustomerEntity")
     public ResponseEntity<UpdatePasswordResponse> updatePassword(@RequestBody UpdatePasswordRequest updatePasswordRequest){
         return new ResponseEntity<UpdatePasswordResponse>(HttpStatus.CREATED);
     }

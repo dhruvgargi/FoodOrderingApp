@@ -1,10 +1,10 @@
 package com.upgrad.FoodOrderingApp.service.dao;
 
-import org.springframework.stereotype.Repository;
+import com.upgrad.FoodOrderingApp.service.entity.CustomerEntity;
 
-@Repository
 public interface CustomerRepository {
 
 
+    public CustomerEntity getCustomerByContactNumber(String customerContactNumber);
 
 }
