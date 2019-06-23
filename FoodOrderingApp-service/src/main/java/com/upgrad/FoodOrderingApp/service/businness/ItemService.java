@@ -21,7 +21,6 @@ public class ItemService {
 
     @Transactional(propagation = Propagation.REQUIRED)
     public List<ItemEntity> getAllItems() {
-
         return itemDao.getAllItems();
     }
 }
