@@ -22,7 +22,6 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/")
 @CrossOrigin
 @Api(value = "CustomerEntity Controller",description = "end-points for CustomerEntity Functions: Signup/Login/Logout/Password")
 public class CustomerController {
@@ -84,7 +83,7 @@ public class CustomerController {
 
     @PostMapping(path="/customer/logout",consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ApiOperation(value="Sign-out for an already logged-in customer")
-    public ResponseEntity<LogoutResponse> logout(@RequestHeader("accessToken") final String accessToken)throws AuthorizationFailedException {
+    public ResponseEntity<LogoutResponse> logout(@RequestHeader("authorization") final String accessToken)throws AuthorizationFailedException {
 
         String [] bearerToken = accessToken.split("Bearer ");
         final CustomerAuthEntity logout = customerService.logout(bearerToken[1]);
@@ -118,7 +117,7 @@ public class CustomerController {
     @PutMapping(path="/customer/password",consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ApiOperation(value="Update the password for an existing CustomerEntity")
     public ResponseEntity<UpdatePasswordResponse> changePassword(@RequestBody(required = false)final UpdatePasswordRequest updatePasswordRequest,
-                                                                 @RequestHeader("accessToken") final String accessToken) throws UpdateCustomerException,AuthorizationFailedException {
+                                                                 @RequestHeader("authorization") final String accessToken) throws UpdateCustomerException,AuthorizationFailedException {
 
         String [] bearerToken = accessToken.split("Bearer ");
         CustomerEntity customerEntity = customerService.getCustomer(bearerToken[1]);
