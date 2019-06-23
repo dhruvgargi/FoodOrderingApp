@@ -85,17 +85,17 @@ public class AddressController {
 
         for( CustomerAddressEntity customerAddressEntity : customerAddressesListByCustomerId){
             AddressList addressList =new AddressList();
-            final AddressEntity addressEntity = customerAddressEntity.getAddress();
-            addressList.id(UUID.fromString(addressEntity.getUuid()));
-            addressList.flatBuildingName(addressEntity.getFlatBuilNumber());
-            addressList.locality(addressEntity.getLocality());
-            addressList.pincode(addressEntity.getPinCode());
-            addressList.city(addressEntity.getCity());
+            AddressEntity addressEntity = customerAddressEntity.getAddress();
+            addressList.setId(UUID.fromString(addressEntity.getUuid()));
+            addressList.setFlatBuildingName(addressEntity.getFlatBuilNumber());
+            addressList.setLocality(addressEntity.getLocality());
+            addressList.setPincode(addressEntity.getPinCode());
+            addressList.setCity(addressEntity.getCity());
 
-            final StateEntity stateEntity =addressEntity.getState();
+            StateEntity stateEntity =addressEntity.getState();
             AddressListState addressListState=new AddressListState();
-            addressListState.id(UUID.fromString(stateEntity.getUuid()));
-            addressListState.stateName(stateEntity.getStateName());
+            addressListState.setId(UUID.fromString(stateEntity.getUuid()));
+            addressListState.setStateName(stateEntity.getStateName());
 
             addressList.state(addressListState);
 
